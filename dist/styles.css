@@ -1,0 +1,5 @@
+#gameField td {width: 80px; height: 80px; background-color: antiquewhite;
+text-align: center; font-size: 32px; color: brown;}
+#crestField td {width: 80px; height: 80px; background-color: antiquewhite;
+text-align: center; font-size: 32px; color: brown;}
+td.empty {background-color: blueviolet !important;}

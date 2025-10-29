@@ -1,5 +1,8 @@
 import 'phaser';
 import { Square } from './square';
+import { Pyramid } from './pyramid';
+import { Corner } from './corner';
+import { Crest } from './crest';
 
 export  class Krestinol extends Phaser.Scene
 {
@@ -51,7 +54,7 @@ export  class Krestinol extends Phaser.Scene
 
         this.soliterField = this.add.image(338,796,'soliterField');
 
-        let square:Square = new Square(this)
+        let crest:Crest = new Crest(this)
 
         // this.add.image(192,568,'backCard').setScale(0.8);
         // this.add.image(480,568,'backCard').setScale(0.8);
@@ -65,7 +68,7 @@ export  class Krestinol extends Phaser.Scene
         // this.add.image(288,688,'backCard').setScale(0.8);
         // this.add.image(384,688,'backCard').setScale(0.8);
 
-        //this.card0 = this.add.image(182,574,'card0').setInteractive();
+        //this.card0 = this.add.image(228,866,'card0').setScale(0.8);
 
         //this.backCardArr.push(this.add.image(192,574,'backCard').setScale(0.75))
 

@@ -23,7 +23,11 @@ export class Square{
             // }
             try{
                 if(gameObject.texture.key == "backCard140"){
-                    if(gameObject.getData('card') == 0 && this.numUsedCards < 36){
+                    
+                    if(
+                        //TODO раскоментировать после отладки
+                        //gameObject.getData('card') == 0 && 
+                        this.numUsedCards < 36){
                         let card = this.cardsImgArr[this.numUsedCards];
                         gameObject.data.values.card = card.data.values.card;
                         console.log(gameObject.data.values.ind);
@@ -107,13 +111,11 @@ export class Square{
     addCard(ind:number){
         let clickedCard:number = this.bcCardsArr[ind].data.values.card;
         let suit:number = this.getSuitByNum(clickedCard)
-        let indArr:Array<number> = []
         let bcArr:Array<number> = []
-        let indInCardArr = -1
         let isLine:boolean = false
         switch(ind){
             case 0:
-                // проверяем погоризонтали совпадают ли масти
+                // проверяем по горизонтали совпадают ли масти
                 if(this.bcCardsArr[1].data.values.card != 0 &&
                     this.bcCardsArr[2].data.values.card != 0 &&
                     suit == this.getSuitByNum(this.bcCardsArr[1].data.values.card) &&
@@ -401,15 +403,17 @@ export class Square{
         let cardVal:number;
         let cardImg:Phaser.GameObjects.Image;
 
-        bcArr.forEach((val) => {
-            cardVal = this.bcCardsArr[val].data.values.card;
-            cardImg = this.cardsImgArr.find((img) => {
-                if (img.data.values.card == cardVal) return true;
-            })
-            cardImg.setActive(false).setVisible(false);
-            this.bcCardsArr[val].data.values.card = 0;
-        })
-        console.log("clearLine")
+        for (let i = 0; i < bcArr.length; i++) {
+            cardVal = this.bcCardsArr[bcArr[i]].data.values.card;
+            if (cardVal != 0) {
+                cardImg = this.cardsImgArr.find(
+                    (img) => {
+                        if (img.data.values.card == cardVal) return true;
+                    })
+                cardImg.setActive(false).setVisible(false);
+                this.bcCardsArr[bcArr[i]].data.values.card = 0;
+            }
+        }
     }
 
     // возвращает карту по её номеру(номера карт начинаются с 1),
